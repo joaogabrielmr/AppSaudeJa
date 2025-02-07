@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8ad2f3; 
+    margin: 0; 
+    padding: 0; 
+}
+
+#header {
+    background-color: #080808;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+#buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}       
+
+.button {
+    background-color: #080808;
+    color: white;
+    border: none;
+    padding: 30px 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#footer {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    width: 100%; 
+    position: absolute;
+    bottom: 0; 
+}
+
+.centered-form {
+    position: absolute;
+    top: 300px; /* Desloca o formulário 100 pixels para baixo */
+    left: 50%; /* Centraliza horizontalmente o container */
+    transform: translateX(-50%); /* Centraliza horizontalmente o formulário */
+    text-align: center; /* Centraliza o texto dentro do container */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* Define a largura das caixas de input para 100% */
+    padding: 10px; /* Adicione um espaçamento interno para melhor aparência */
+}

@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8ad2f3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+/* Barra superior */
+#header {
+    background-color: #080808;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Título no canto esquerdo */
+#header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+/* Botões no centro da barra */
+#buttons {
+    display: flex;
+    gap: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+/* Estilos dos botões */
+.button, .button2 { /* Agora os dois grupos de botões têm o mesmo estilo */
+    background-color: #6facf3;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px; /* Aplica borda arredondada */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Imagem pequena no canto direito da barra */
+#header-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Logo principal - agora um pouco maior */
+#logo {
+    max-width: 250px;
+    margin: 30px auto;
+}
+
+/* Texto centralizado abaixo da logo */
+#texto-centralizado {
+    font-size: large;
+    width: 80%;
+    max-width: 900px;
+    text-align: justify;
+    line-height: 1.5;
+    margin: 20px 0;
+}
+
+/* Botões abaixo do texto */
+#buttons2 {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    margin-bottom: 80px;
+    height: 20px;
+    width: 50px;
+}
+
+/* Rodapé fixo no final da página */
+#footer {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-top: auto;
+}
+
+/* Links do rodapé */
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: rgb(0, 204, 255);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #buttons2 {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}

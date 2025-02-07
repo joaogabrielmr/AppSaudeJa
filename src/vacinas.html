@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/vacinas.css">
+    <title>APP Saúde</title>    
+</head>
+<body>
+    <div id="header">
+        <h1>APP Saúde</h1>
+    </div>
+    <div id="buttons">
+        <a href="../home.html"><button class="button" id="button1">INICIO </button></a>
+        <a href="./login.html"><button class="button" id="button1">LOGIN </button></a>
+        <a href="./cadastro.html"><button class="button" id="button2">CADASTRO</button></a>
+        <a href="./atendimento.html"><button class="button" id="button3">ATENDIMENTO</button></a>
+    </div>  
+
+    <div id="content-container">
+        <div id="image-container">
+            <!-- Adicione a imagem desejada aqui -->
+            <img src="../img/vacina.svg" alt="Imagem" width="400">
+        </div>
+        
+        <div id="vacina-info">
+            <h1>Selecione a Vacina:</h1>
+
+            <select id="opcoes">
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="opcao1">CAXUMBA</option>
+                <option value="opcao2">HEPATITE</option>
+                <option value="opcao3">SARAMPO</option>
+            </select>
+
+            <p id="resultado"></p>
+
+            <script>
+                const select = document.getElementById("opcoes");
+                const resultado = document.getElementById("resultado");
+
+                select.addEventListener("change", function() {
+                    const escolha = select.value;
+                    if (escolha === "") {
+                        resultado.textContent = "";
+                    } 
+                    else {
+                        switch (escolha) {
+                            case "opcao1": // CAXUMBA
+                                resultado.innerHTML = `
+                                    <p><strong>O que é caxumba?</strong> A caxumba é uma infecção viral aguda e contagiosa. Pode atingir qualquer tecido glandular e nervoso do corpo humano, mas é mais comum afetar as glândulas parótidas, que produzem a saliva, ou as submandibulares e sublinguais, próximas ao ouvido. A caxumba, também conhecida como Papeira, é uma doença de distribuição universal, de alta morbidade e baixa letalidade, aparecendo sob a forma endêmica ou surtos.</p>
+                                    <p>É mais comum em crianças no período escolar e em adolescentes, mas também pode afetar adultos em qualquer idade. Normalmente, a caxumba tem evolução benigna, mas em alguns raros casos pode apresentar complicações resultando em internações e até mesmo em morte.</p>
+                                    <p><strong>A vacinação é a única maneira de prevenir a caxumba.</strong> O Sistema Único de Saúde oferta gratuitamente as vacinas Tríplice Viral, que protegem contra sarampo, caxumba e rubéola, e Treta Viral, que adiciona a proteção contra varicela (catapora). Adultos que não foram infectados pelo vírus da caxumba na infância ou na adolescência têm indicação de ser imunizados, com exceção de gestantes e imunodeprimidos graves.</p>
+                                `;
+                                break;
+                            case "opcao2": // HEPATITE
+                                resultado.innerHTML = `
+                                <p><strong>O que é hepatite?</strong> A hepatite é um tipo de inflamação do fígado que pode ter diferentes causas. A hepatite pode ser causada por vírus e bactérias diversos e até mesmo pelo consumo excessivo de substâncias, como certos tipos de medicamentos e até mesmo de drogas e bebidas alcoólicas.</p>
+                                <p>Certas condições autoimunes também podem causar hepatite no paciente, sendo que é preciso investigar seu quadro médico de forma precisa, para indicar o tipo de tratamento mais adequado a aquele paciente.</p>
+                                <p><strong>Quais são os tipos de hepatite?</strong> Existem diferentes tipos de hepatite, sendo que estes estão relacionados aos agentes causadores dessa inflamação no fígado.</p>
+                                <ul>
+                                    <li><strong>Hepatite A:</strong> A hepatite A é causada pelo vírus da hepatite A, que pode ser transmitido por via sexual, mas também pelo consumo de água e de alimentos contaminados. Outra forma de proteção é a vacinação de crianças de 15 meses a menores de cinco anos. A vacina está disponível gratuitamente no Sistema Único de Saúde (SUS).</li>
+                                    <li><strong>Hepatite B:</strong> Essa hepatite é causada pelo vírus da hepatite B, transmitido de uma pessoa a outra por meio do contato com fluidos corporais, como o sêmen e a saliva. No entanto, a hepatite B também pode ser facilmente transmitida por meio do uso de objetos não esterilizados, como alicates e lâminas de barbear que são comumente utilizados em salões de beleza. A vacina é disponibilizada gratuitamente pelo Sistema Único de Saúde (SUS) à todo cidadão. As crianças devem se vacinar ao nascer e aos 2, 4 e 6 meses. Para os adultos que não se vacinaram na infância, são recomendadas três doses.</li>
+                                    <li><strong>Hepatite C:</strong> A hepatite C também é causada por um vírus e tem um meio de transmissão similar ao da hepatite B. Como não existe vacina para hepatite C, as melhores formas de se prevenir são através do uso de preservativos em todas as relações sexuais e o não compartilhamento de materiais contaminados.</li>
+                                    <li><strong>Hepatite medicamentosa:</strong> A hepatite medicamentosa é aquela causada pelo consumo excessivo de certos tipos de medicamentos que acabam por agredir o fígado, causando o processo inflamatório. Esses medicamentos podem acabar sendo, por exemplo, consumidos em sobredosagem pelo paciente, o que desencadeia a doença.</li>
+                                    <li><strong>Esteato-hepatite:</strong> A esteato-hepatite é causada por uma condição chamada de esteatose hepática. Trata-se de um acúmulo de gordura no fígado que pode acabar resultando em um processo de inflamação no fígado.</li>
+                                    </ul>`;
+                                break;
+                            case "opcao3": // SARAMPO
+                                resultado.innerHTML = `
+                                    <p><strong>O que causa?</strong> A transmissão do vírus ocorre de pessoa a pessoa, por via aérea, ao tossir, espirrar, falar ou respirar. O sarampo é tão contagioso que uma pessoa infectada pode transmitir para 90% das pessoas próximas que não estejam imunes. A transmissão pode ocorrer entre 4 dias antes e 4 dias após o aparecimento das manchas vermelhas pelo corpo.</p>
+                                    <p>Na rotina dos serviços de saúde, todas as pessoas de 12 meses a 59 anos de idade têm indicação para serem vacinadas contra o sarampo. Adolescentes e adultos não vacinados ou com esquema incompleto contra o sarampo devem iniciar ou completar o esquema vacinal de acordo com a situação encontrada, respeitando as indicações do Calendário Nacional de Vacinação. Na rotina dos serviços públicos de vacinação, há duas vacinas disponíveis para proteção contra o sarampo: vacina tríplice viral (sarampo, caxumba e rubéola) e a tetraviral (sarampo, caxumba, rubéola e varicela).</p>
+                                `;
+                                break;
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    <div id="footer">
+        <a href="https://www.instagram.com/onubrasil/" class="link" target="blank">@appsaude</a>
+    </div>
+</body>
+</html>

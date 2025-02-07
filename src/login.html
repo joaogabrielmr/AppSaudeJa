@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <title>APP Saúde</title>
+    <script>
+        function realizarLogin() {
+            var nomeUsuario = document.getElementById("nomeUsuario").value;
+            var senha = document.getElementById("senha").value;
+    
+            // Verifique se o nome de usuário e senha estão corretos (você pode adicionar sua própria lógica de verificação aqui)
+            if (nomeUsuario === "joao" && senha === "1234") {
+                // Redirecionar para a página de boas-vindas
+                window.location.href = "../home.html";
+            } else {
+                // Exibir mensagem de erro ou redirecionar para a página de cadastro
+                alert("Nome de usuário ou senha incorretos. Clique em 'Cadastro' para se registrar.");
+                // // Redirecionar para a página de cadastro
+                // window.location.href = "pagina_cadastro.html";
+            }
+        }
+    </script>    
+</head>
+<body>
+    <div id="header">
+        <h1>APP Saúde</h1>
+    </div>
+    <div id="buttons">
+        <a href= "../home.html"><button class="button" id="button1">INICIO </button></a>
+        <a href= "./login.html"><button class="button" id="button1">LOGIN </button></a>
+        <a href= "./cadastro.html"><button class="button" id="button2">CADASTRO</button></a>
+        <a href= "./atendimento.html"><button class="button" id="button3">ATENDIMENTO</button></a>
+    </div>
+    <div class="centered-form"> 
+    <formv>
+        <label for="nomeUsuario">Nome de Usuário:</label>
+        <input type="text" id="nomeUsuario" name="nomeUsuario" required><br><br>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required><br><br>
+
+        <input type="button" value="Entrar" onclick="realizarLogin()">
+    </form>
+    <p>Não tem uma conta? <a href="cadastro.html">Clique aqui para se cadastrar</a>.</p>
+    </div>
+    <div id="footer">
+        <a href="https://www.instagram.com/onubrasil/" class="link" target="blank">@appsaude</a>
+    </div>
+</body>
+</html>

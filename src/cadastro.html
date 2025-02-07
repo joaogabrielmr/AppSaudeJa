@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
+    <title>APP Saúde</title>    
+    <script>
+        function realizarCadastro() {
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var senha = document.getElementById("senha").value;
+            var confirmarSenha = document.getElementById("confirmarSenha").value;
+    
+            // Verifique se algum campo está vazio
+            if (nome === "" || email === "" || senha === "" || confirmarSenha === "") {
+                alert("Por favor, preencha todos os campos antes de realizar o cadastro.");
+                return; // Evita a tentativa de cadastro se algum campo estiver vazio
+            }    
+            // Verifique se as senhas coincidem
+            if (senha !== confirmarSenha) {
+                alert("As senhas não coincidem. Por favor, tente novamente.");
+                return;
+            }    
+            alert("Cadastro realizado com sucesso! Você pode fazer login agora.");
+            window.location.href = "../home.html"; // Redirecionar para a página de login
+        }
+    </script>    
+</head>
+<body>
+    <div id="header">
+        <h1>APP Saúde</h1>
+    </div>
+    <div class="centered-div">
+    <h2>Cadastro</h2>
+    <form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required><br><br>
+
+        <label for="confirmarSenha">Confirmar Senha:</label>
+        <input type="password" id="confirmarSenha" name="confirmarSenha" required><br><br>
+
+        <input type="button" value="Cadastrar" onclick="realizarCadastro()">
+    </form>
+    </div>
+    <div id="buttons">
+        <a href= "../home.html"><button class="button" id="button1">INICIO </button></a>
+        <a href= "./login.html"><button class="button" id="button1">LOGIN </button></a>
+        <a href= "./cadastro.html"><button class="button" id="button2">CADASTRO</button></a>
+        <a href= "./atendimento.html"><button class="button" id="button3">ATENDIMENTO</button></a>
+    </div>  
+    <div id="footer">
+        <a href="https://www.instagram.com/onubrasil/" class="link" target="blank">@appsaude</a>
+    </div>
+</body>
+</html>

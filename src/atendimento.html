@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/atendimento.css">
+    <title>APP Saúde</title>
+</head>
+
+<body onload="initialize()">
+    <div id="header">
+        <h1>APP Saúde</h1>
+    </div>
+    
+    <div id="locais">
+        <h2>LOCAIS DE ATENDIMENTO MAIS PRÓXIMO:</h2>
+    </div>
+    
+    <div id="buttons">
+        <a href="../home.html"><button class="button" id="button1">INICIO </button></a>
+        <a href="./login.html"><button class="button" id="button2">LOGIN </button></a>
+        <a href="./cadastro.html"><button class="button" id="button3">CADASTRO</button></a>
+        <a href="./atendimento.html"><button class="button" id="button4">ATENDIMENTO</button></a>
+    </div>
+    
+    <div id="escolhacidades">
+        <form>
+            <label for="cidade">Escolha sua cidade:</label>
+            <select id="cidade" name="cidade">
+                <option value="Piraquara">Piraquara</option>
+                <option value="Pinhais">Pinhais</option>
+                <option value="Curitiba">Curitiba</option>
+            </select>
+        </form>
+    </div>
+    
+    <div id="escolhabairros">
+        <form>
+            <label for="bairros">Escolha seu bairro:</label>
+            <select id="bairros" name="bairros" onchange="atualizarUPA()">
+                <optgroup label="Piraquara">
+                    <option value="Guarituba">Guarituba</option>
+                    <option value="Centropiraquara">Centro Piraquara</option>
+                    <option value="Saocristovao">São Cristovão</option>
+                </optgroup>
+                <optgroup label="Pinhais">
+                    <option value="mariaantonieta">Maria Antonieta</option>
+                    <option value="jardimamélia">Jardim Amélia</option>
+                    <option value="vilataruma">Vila Tarumã</option>
+                </optgroup>
+                <optgroup label="Curitiba">
+                    <option value="bairroalto">Bairro Alto</option>
+                    <option value="centrocuritiba">Centro Curitiba</option>
+                    <option value="bacacheri">Bacacheri</option>
+                </optgroup>
+            </select>
+        </form>
+    </div>
+    
+    <div id="quadrado">
+        <div id="upaInfo"></div>
+    </div>
+    
+    <div id="footer">
+        <a href="https://www.instagram.com/onubrasil/" class="link" target="blank">@appsaude</a>
+    </div>
+    <script>
+        var upaInfoPorBairro = {
+        "Guarituba": "<img src=..\\img\\guarituba.jpg><p>Endereço: Rod. Dep. João Leopoldo Jacomel, 3733 - Guarituba, Piraquara - PR, 83310-170</p><p>Horas: Aberto 24 horas</p><p>Telefone: (41) 3590-0135</p>",
+        "Centropiraquara": "<img src=..\\img\\centropiraquara.png><p>Endereço: R. Vitório Scarante, 855 - Centro, Piraquara - PR, 83301-530</p><p>Horas: Das 07:00 às 19:00</p><p>Telefone: (41) 3590-3757</p>",
+        "Saocristovao": "<img src=..\\img\\saocristovao.jpg><p>Endereço: R. Francisco Lourenço - Vila Sao Cristovao, Piraquara - PR, 83305</p><p>Horas: Das 07:00 às 17:00</p><p>Telefone: (41) 3590-3754</p>",
+        "mariaantonieta": "<img src=..\\img\\mariaantonieta.jpg><p>Endereço: R. Jerônimo Mendes dos Santos, 506 - Maria Antonieta, Pinhais - PR, 83331-170</p><p>Horas: Das 07:00 às 19:00</p><p>Telefone: (41) 99149-6305</p>",
+        "jardimamélia": "<img src=..\\img\\jardimamelia.jpg><p>Endereço: R. Artur Bernardes, 342 - Jardim Amélia, Pinhais - PR, 83330-080</p><p>Horas: Das 07:00 às 17:00</p><p>Telefone: (41) 99131-8560</p>",
+        "vilataruma": "<img src=..\\img\\vilataruma.jpg><p>Endereço: Rua Guilherme Weiss, 500 - Vila Taruma, Pinhais - PR, 83323-200</p><p>Horas: Das 07:00 às 17:00</p><p>Telefone: (41) 99185-3806</p>",
+        "bairroalto": "<img src=..\\img\\bairroalto.jpg><p>Endereço: R. Jorn. Alceu Chichorro, 314 - Bairro Alto, Curitiba - PR, 82820-290</p><p>Horas: Das 07:00 às 17:00</p><p>Telefone: (41) 3315-2281</p>",
+        "centrocuritiba": "<img src=..\\img\\centrocuritiba.jpg><p>Endereço: Praça Rui Barbosa, 694 - Centro, Curitiba - PR, 80010-030</p><p>Horas: Aberto 24 horas</p><p>Telefone: (41) 33203500</p>",
+        "bacacheri" : "<img src=..\\img\\bacacheri.jpg><p>Endereço: Av. Pref. Erasto Gaertner, 797 - Bacacheri, Curitiba - PR, 82510-160</><p> Horas: ⋅ Abre às 07:00 às 19:00</p><p> Telefone: (41) 3251-1029</p>"
+    };
+        function initialize() {
+        var selecaoCidade = document.getElementById('cidade');
+        var selecaoBairro = document.getElementById('bairros');
+        var optgroups = selecaoBairro.querySelectorAll('optgroup');
+
+        optgroups.forEach(function (optgroup) {
+            optgroup.style.display = 'none';
+        });
+
+        var selectedOptgroup = selecaoBairro.querySelector('optgroup[label="' + selecaoCidade.value + '"]');
+        selectedOptgroup.childNodes[1].selected = true;
+        selectedOptgroup.style.display = 'block';
+
+
+        selecaoCidade.addEventListener('change', function () {
+            optgroups.forEach(function (optgroup) {
+                optgroup.style.display = 'none';
+            });
+
+            var selectedOptgroup = selecaoBairro.querySelector('optgroup[label="' + selecaoCidade.value + '"]');
+            selectedOptgroup.childNodes[1].selected = true;
+            selectedOptgroup.style.display = 'block';
+
+            atualizarUPA();
+        });
+              
+        atualizarUPA();
+    }
+
+    function atualizarUPA() {
+        var selecaoBairro = document.getElementById('bairros');
+        var selectedBairro = selecaoBairro.value;
+
+        var upaInfoDiv = document.getElementById('upaInfo');
+        if (upaInfoPorBairro[selectedBairro]) {
+            upaInfoDiv.innerHTML = upaInfoPorBairro[selectedBairro];
+        } 
+    }
+    </script>
+</body>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #8ad2f3;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #locais {
+        font-size: 30px;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    #header {
+        background-color: #080808;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    #buttons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .button {
+        background-color: #080808;
+        color: white;
+        border: none;
+        padding: 30px 20px;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+    
+    #footer {
+        background-color: #000;
+        color: white;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+    
+    #escolhacidades {
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+        padding: 10px;
+    }
+    
+    #cidade {
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+    }
+    
+    #escolhabairros {
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+        padding: 10px;
+    }
+    
+    #bairros {
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+    }
+    
+    #quadrado {
+        background-color: white;
+        width: 800px;
+        height: 500px;
+        border: 2px solid #000000;
+        border-radius: 20px;
+        margin-left: 1000px;
+        margin-top: -90px;
+    }
+    
+    #upaInfo {
+        margin-top: 320px;
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    #upaInfo img {
+
+     margin-top: -1300px;
+     height: 300px;
+     width: 500px;
+     
+    }
+</style>
+
+</html>
